@@ -69,8 +69,7 @@ public class Server {
 			public ServantWorker(Socket clientSocket) {
 				try {
 					this.clientSocket = clientSocket;
-					in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-					out = new PrintWriter(clientSocket.getOutputStream());
+					new Handler().clientConnectionhandler(clientSocket.getInputStream(),clientSocket.getOutputStream());
 				} catch (IOException ex) {
 				
 				}
@@ -81,24 +80,7 @@ public class Server {
 				String line;
 				boolean shouldRun = true;
 				
-				out.println("Welcome to the Calculator");
-				
-				out.print("Voici la liste de commande [");
-				for(String s : Protocol.LIST_COMMANDS){
-					out.print(s + ",");
-				}
-				out.print("]\n");
-				out.flush();
 				try {
-					
-					while ((shouldRun) && (line = in.readLine()) != null) {
-						if (line.equalsIgnoreCase(Protocol.CMD_QUIT)) {
-							shouldRun = false;
-						}
-						out.println("> " + line.toUpperCase());
-						out.flush();
-					}
-					
 					clientSocket.close();
 					in.close();
 					out.close();
