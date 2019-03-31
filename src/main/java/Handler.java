@@ -22,9 +22,8 @@ public class Handler {
 		String command;
 		boolean done = false;
 		
-		writer.println("Welcome to our calcular !");
-		
-		help(writer);
+		writer.println("Welcome to our calcular ! ");
+		writer.flush();
 		
 		while(!done && ((command = reader.readLine()) != null)){
 			

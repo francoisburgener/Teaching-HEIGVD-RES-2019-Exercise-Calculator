@@ -1,5 +1,3 @@
-package batach31;
-
 import java.net.*;
 import java.io.*;
 import java.util.Scanner;
@@ -41,9 +39,11 @@ public class Client {
             }
         }
 
-        public void communicationWithServer(){
+        public void communicationWithServer() throws IOException {
             String msg = "";
             startConnection("localhost", 1515);
+            
+            System.out.println(in.readLine());
             Scanner sc = new Scanner(System.in);
             while (!(msg = sc.nextLine()).equals("QUIT")){
                 System.out.println(sendMessage(msg));
