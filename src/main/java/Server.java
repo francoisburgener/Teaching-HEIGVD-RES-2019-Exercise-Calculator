@@ -1,3 +1,5 @@
+import batach31.Client;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -111,5 +113,8 @@ public class Server {
 	public static void main(String... args){
 		Server multi = new Server();
 		multi.serveClients();
+
+		batach31.Client client = new Client();
+		client.communicationWithServer();
 	}
 }
